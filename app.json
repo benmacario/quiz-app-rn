@@ -1,0 +1,12 @@
+{
+  "name": "rn-quiz",
+  "displayName": "rn-quiz",
+  "expo": {
+    "name": "rn-quiz",
+    "slug": "rn-quiz",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
