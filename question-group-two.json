@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "question": "Onde tem o maior saldo de ATP dentre as etapas da respiração celular?",
+    "answers": {
+      "Glicólise": true,
+      "Cadeia respiratória": false,
+      "Ciclo de Krebs": false,
+      "Fermentação": false
+    }
+  },
+  {
+    "id": 2,
+    "question": "A membrana plasmática controla a entrada e saída de substâncias na célula e envolve o citoplasma. Essa afirmação é verdadeira ou falsa?",
+    "answers": {
+      "Verdadeira": true,
+      "Falsa": false
+    }
+  },
+  {
+    "id": 3,
+    "question": "Qual ciência que estuda a estrutura e as funções das células?",
+    "answers": {
+      "Histologia": false,
+      "Fisiologia": false,
+      "Taxonomia": false,
+      "Citologia": true
+    }
+  },
+  {
+    "id": 4,
+    "question": "Quais as coenzimas responsáveis pelo transporte de elétrons no processo de oxidação dos compostos orgânicos nas mitocôndrias?",
+    "answers": {
+      "SAMe": false,
+      " NADH e FADH": true,
+      "Q10": false,
+      "CoA": false
+    }
+  },
+  {
+    "id": 5,
+    "question": "Qual é o principal processo anaeróbio de obtenção de energia a partir de substâncias orgânicas?",
+    "answers": {
+      "Quimiossíntese": false,
+      "Fermentação": true,
+      "Respiração celular": false,
+      "Fotossíntese": false
+    }
+  },
+  {
+    "id": 6,
+    "question": "Em que local da célula ocorre a glicólise?",
+    "answers": {
+      "Cloroplastos": false,
+      "Mitocôndrias": false,
+      "Citosol": true,
+      "Núcleo": false
+    }
+  },
+  {
+    "id": 7,
+    "question": "Na primeira etapa do processo de fotossíntese ocorre:",
+    "answers": {
+      "Redução de CO2": true,
+      "Produção de O2": false,
+      "Produção de NADPH2": false,
+      "Fotólise da água": false
+    }
+  },
+  {
+    "id": 8,
+    "question": "A fase química da fotossíntese poderia ocorrer independentemente da etapa fotoquímica se os cloroplastos possuíssem:",
+    "answers": {
+      "ATP e NADPH": true,
+      "Elétrons": false,
+      "CoA": false,
+      "CO2": false
+    }
+  },
+  {
+    "id": 9,
+    "question": "Que tipo de Respiração Celular a animação abaixo corresponde:",
+    "answers": {
+      "Glicólise ": false,
+      "Cadeia Respiratória": false,
+      "Ciclo de Krebs": true,
+      "Cadeia Carbônica": false
+    }
+  },
+  {
+    "id": 10,
+    "question": "De onde vem a energia necessária para a ativação dos elétrons na fotossíntese?",
+    "answers": {
+      "Queimadas": false,
+      "Energia nuclear": false,
+      "Luz solar": true,
+      "Força Vital": false
+    }
+  }
+]

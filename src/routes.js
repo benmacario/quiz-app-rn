@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Home from './Pages/Home';
 import Questions from './Pages/Questions';
 import Congratulation from './Pages/Congratulation';
+import Students from './Pages/NameStudents';
 
 const Stack = createStackNavigator();
 
@@ -27,8 +28,7 @@ function Routes() {
               headerTitleAlign: 'center',
               headerTitleStyle: {
                 fontWeight: 'bold',
-              }
-
+              },
             }
           }
         />
@@ -37,7 +37,7 @@ function Routes() {
           component={Questions}
           options={
             {
-              headerTitle: <Header title="1º pergunta"/>,
+              headerTitle: <Header title="Citoplasma e Respiração Celular"/>,
               headerStyle: {
                 backgroundColor: '#875FC0'
               },
@@ -65,6 +65,23 @@ function Routes() {
                 fontWeight: 'bold',
               },
               headerLeft: null
+            }
+          }
+        />
+        <Stack.Screen
+          name="Students"
+          component={Students}
+          options={
+            {
+              headerTitle: <Header title="Nome dos estudantes"/>,
+              headerStyle: {
+                backgroundColor: '#875FC0'
+              },
+              headerTintColor: '#fff',
+              headerTitleAlign: 'center',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              }
             }
           }
         />

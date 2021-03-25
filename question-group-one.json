@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "question": "Qual o nome do gás consumido na respiração de um vegetal?",
+    "answers_correct": [
+      "Oxigênio"
+    ],
+    "answers": [
+      "Oxigênio",
+      "Hidrogênio",
+      "Nitrogênio",
+      "Amônio"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Quais os materiais necessários aos processos vitais das plantas que, dissolvidos em H2O, são absorvidos pelas suas raízes?",
+    "answers_correct": [
+      "Nutrientes minerais"
+    ],
+    "answers": [
+      "Nutrientes minerais",
+      "Pedras moídas",
+      "Serragem de madeira",
+      "Pó de café"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Gás produzido na respiração de um vegetal e consumido na fotossíntese?",
+    "answers_correct": [
+      "Carbônico"
+    ],
+    "answers": [
+      "Carbônico",
+      "Hidrogênio",
+      "Oxigênio",
+      "Nitrogênio"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Qual líquido é essencial aos processos vitais da planta?",
+    "answers_correct": [
+      "Água"
+    ],
+    "answers": [
+      "Água",
+      "Refrigerante",
+      "Azeite",
+      "Cafezinho"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Nome de um importante açúcar produzido na fotossíntese",
+    "answers_correct": [
+      "Glicose"
+    ],
+    "answers": [
+      "Glicose",
+      "Frutose",
+      "Celulose",
+      "Celobiose"
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Cor da clorofila",
+    "answers_correct": [
+      "Verde"
+    ],
+    "answers": [
+      "Verde",
+      "Laranja",
+      "Vermelho",
+      "Branco"
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Processo principal por meio do qual os vegetais produzem alimento",
+    "answers_correct": [
+      "Fotossíntese"
+    ],
+    "answers": [
+      "Fotossíntese",
+      "Quimiossíntese",
+      "Fermentação",
+      "Respiração celular"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "Fator necessário à fotossíntese, fornecido pelo sol",
+    "answers_correct": [
+      "Luz"
+    ],
+    "answers": [
+      "Luz",
+      "Oxigênio",
+      "Sais minerais",
+      "Pigmento verde"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Qual das organelas abaixo está presente somente nos eucariontes e representa um critério para distingui-lo dos procariontes?",
+    "answers_correct": [
+      "Envoltório Nuclear"
+    ],
+    "answers": [
+      "Envoltório Nuclear",
+      "Membrana Celular",
+      "Ribossomos",
+      "RNA"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "No final da respiração celular, há um saldo positivo total de aproximadamente quantas moléculas de ATP?",
+    "answers_correct": [
+      "30 ou 32"
+    ],
+    "answers": [
+      "30 ou 32",
+      "26 ou 28",
+      "2 ou 4",
+      "38"
+    ]
+  }
+]

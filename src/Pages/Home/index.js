@@ -25,6 +25,8 @@ const styles = StyleSheet.create({
   bannerHome: {
     display: 'flex',
     width: '90%',
+    minHeight: 300,
+    maxHeight: 400,
     backgroundColor: "#fff",
     borderRadius: 15,
 
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
 
   textBanner: {
     marginTop: 100,
-    marginBottom: 50,
+    marginBottom: 30,
     marginHorizontal: 30,
 
     textAlign: 'center',
@@ -43,14 +45,14 @@ const styles = StyleSheet.create({
     fontFamily: 'MPLUSRounded1c_700Bold'
   },
 
-  sobre: {
-    position: 'absolute',
-    bottom: 0,
-    marginBottom: 30,
-    fontFamily: 'MPLUSRounded1c_700Bold',
-    fontSize: 18,
-    color: '#FFF',
-    opacity: 0.6
+  textBannerTema: {
+    marginBottom: 50,
+    marginHorizontal: 30,
+
+    textAlign: 'center',
+    fontSize: 22,
+    color: '#666',
+    fontFamily: 'MPLUSRounded1c_700Bold'
   },
 
   button: {
@@ -65,6 +67,19 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontFamily: 'MPLUSRounded1c_700Bold',
     fontSize: 18,
+  },
+
+  sobre: {
+    position: 'absolute',
+    bottom: 0,
+    marginBottom: 30,
+  },
+
+  textSobre: {
+    fontFamily: 'MPLUSRounded1c_700Bold',
+    fontSize: 18,
+    color: '#FFF',
+    opacity: 0.6
   }
 });
 
@@ -84,7 +99,12 @@ export default function Home({ navigation }) {
       </View>
       <View style={styles.bannerHome}>
         <Text style={styles.textBanner}>
-          O plicativo foi feito com o intuitito de apresentar o trabalho do curso de Odontologia
+          O aplicativo foi feito com o
+          intuitito de apresentar o
+          trabalho do curso de Odontologia
+        </Text>
+        <Text style={styles.textBannerTema}>
+          Tema: Citoplasma e Respiração Celular
         </Text>
       </View>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Questions')}>
@@ -92,9 +112,11 @@ export default function Home({ navigation }) {
           COMEÇAR
         </Text>
       </TouchableOpacity>
-      <Text style={styles.sobre}>
-        Alunos
-      </Text>
+      <TouchableOpacity style={styles.sobre} onPress={() => navigation.navigate('Students')}>
+        <Text style={styles.textSobre}>
+          Alunos
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }

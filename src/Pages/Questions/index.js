@@ -1,6 +1,13 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet, Modal } from 'react-native';
 import { useFonts, MPLUSRounded1c_700Bold } from '@expo-google-fonts/m-plus-rounded-1c';
+
+import question from '../../../question-group-one.json';
+import failLogo from '../../assets/fail.svg';
+
+const data = question;
+
+let startTime ;
 
 const styles = StyleSheet.create({
   container: {
@@ -24,10 +31,12 @@ const styles = StyleSheet.create({
     fontSize: 40,
 
     fontFamily: 'MPLUSRounded1c_700Bold',
+    textAlign: 'center',
   },
 
   bannerQuestion: {
     width: '90%',
+    minHeight: 200,
     maxHeight: 320,
     marginTop: 20,
     backgroundColor: '#FFF',
@@ -100,10 +109,109 @@ const styles = StyleSheet.create({
     fontSize: 18,
 
     fontFamily: 'MPLUSRounded1c_700Bold',
+  },
+
+  bannerModal: {
+    paddingVertical: 40,
+    paddingHorizontal: 20,
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    backgroundColor: '#FFF',
+    height: '100%',
+  },
+
+  failLogo: {
+    width: 266,
+    height: 175,
+  },
+
+  titileModal: {
+    color: '#928F8F',
+    fontSize: 22,
+    fontFamily: 'MPLUSRounded1c_700Bold',
+    marginTop: 25,
+  },
+
+  titleFail: {
+    color: '#928F8F',
+    fontSize: 18,
+    fontFamily: 'MPLUSRounded1c_700Bold',
+    marginTop: 15,
+    textAlign: 'center',
+  },
+
+  button: {
+    marginTop: 30,
+    backgroundColor: '#FBAF00',
+    paddingHorizontal: 80,
+    paddingVertical: 12,
+    borderRadius: 50,
+  },
+
+  buttonResult: {
+    marginTop: 30,
+    backgroundColor: '#875FC0',
+    paddingHorizontal: 80,
+    paddingVertical: 12,
+    borderRadius: 50,
+  },
+
+  textButton: {
+    color: '#FFF',
+    fontFamily: 'MPLUSRounded1c_700Bold',
+    fontSize: 16,
+  },
+
+  buttonModal: {
+    display: 'flex',
   }
 });
 
-export default function Questions({ navigation  }) {
+let index = 0;
+
+export default function Questions({ navigation }) {
+  const [time, setTime] = useState(15);
+  const [myArray, setMyArray] = useState([]);
+  const [isActive, setIsActive] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    if(time === 0) {
+      setTime(15);
+      index = 0;
+      setModalVisible(true);
+      return () => clearTimeout(startTime);
+    }
+
+    setMyArray(data[index].answers);
+  }, [index, time]);
+
+  useEffect(() => {
+    if(isActive && time > 0) {
+      startTime = setTimeout(() => {
+        setTime(time - 1);
+      }, 1000);
+    } else if(!isActive) {
+      setIsActive(true);
+      setTime(15);
+      return () => clearTimeout(startTime);
+    }
+  }, [time, isActive]);
+  
+  function newQuestion() {
+    index++
+    setIsActive(false);
+    if(!data[index]) {
+      index = 0;
+      setTime(15);
+      navigation.navigate('Congratulation');
+    }
+  }
+
   let [fontsLoaded] = useFonts({
     MPLUSRounded1c_700Bold,
   });
@@ -112,6 +220,7 @@ export default function Questions({ navigation  }) {
     return null;
   }
 
+
   return(
     <View style={styles.container}>
       <View>
@@ -119,28 +228,61 @@ export default function Questions({ navigation  }) {
             TEMPO
         </Text>
         <Text style={styles.time}>
-          15s
+          {time}s
         </Text>
       </View>
-      <View style={styles.bannerQuestion}>
-        <Text style={styles.bannerTextQuestion}>
-        A membrana plasmática controla a entrada e saída de substâncias na célula e envolve o citoplasma. Essa afirmação é verdadeira ou falsa?
-        </Text>
-      </View>
-      <View style={styles.containerQuestion}>
-        <TouchableOpacity style={styles.buttonQuestion} onPress={() => navigation.navigate('Congratulation')}>
-          <View style={styles.circle}>
-            <Text style={styles.letterCircle}>A</Text>
+
+        { data ? (
+        <>
+        <View style={styles.bannerQuestion}>
+          <Text style={styles.bannerTextQuestion}>
+            {data[index].question}
+          </Text>
+        </View>
+        <View style={styles.containerQuestion}>
+          { 
+            myArray.map((value, i) => {
+              return(
+                <TouchableOpacity  key={i} style={styles.buttonQuestion} onPress={() => { newQuestion() }}>
+                  <View style={styles.circle}>
+                    <Text style={styles.letterCircle}>{i + 1}</Text>
+                  </View>
+                  <Text style={styles.letterQuestion}>{value}</Text>
+                </TouchableOpacity>
+              );
+            })
+          }
+
+        </View>
+        </>
+        ) : null }
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+      >
+        <View style={styles.bannerModal}>
+          <View>
+            <Image style={styles.failLogo} source={failLogo} />
           </View>
-          <Text style={styles.letterQuestion}>Verdadeira</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonQuestion}>
-          <View style={styles.circle}>
-            <Text style={styles.letterCircle}>B</Text>
+          <Text style={styles.titileModal}>Visssh</Text>
+          <Text style={styles.titleFail}>Seu tempo de responder a questão acababou</Text>
+          <View style={styles.buttonModal}>
+            <TouchableOpacity style={styles.buttonResult} onPress={() => {
+              setModalVisible(false);
+              navigation.navigate('Congratulation')
+            }}>
+              <Text style={styles.textButton}>RESULTADO</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => {
+              setModalVisible(false);
+              navigation.popToTop();
+            }}>
+              <Text style={styles.textButton}>REINICIAR</Text>
+            </TouchableOpacity>
           </View>
-          <Text style={styles.letterQuestion}>Falso</Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </Modal>
     </View>
   );
 }
