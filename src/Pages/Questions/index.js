@@ -7,7 +7,7 @@ import failLogo from '../../assets/fail.svg';
 
 const data = question;
 
-let startTime ;
+let startTime;
 
 const styles = StyleSheet.create({
   container: {
@@ -171,23 +171,29 @@ const styles = StyleSheet.create({
   }
 });
 
-let index = 0;
-
-export default function Questions({ navigation }) {
-  const [time, setTime] = useState(15);
+export default function Questions({ route, navigation }) {
+  const { index } = route.params;
+  const minutesCount = 5;
+  const [time, setTime] = useState(minutesCount);
   const [myArray, setMyArray] = useState([]);
+  const [answersCorrect, setMyAnswersCorrect] = useState([]);
   const [isActive, setIsActive] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     if(time === 0) {
-      setTime(15);
-      index = 0;
+      setTime(minutesCount);
+      navigation.setParams({
+        index: 0,
+      });
       setModalVisible(true);
       return () => clearTimeout(startTime);
     }
 
-    setMyArray(data[index].answers);
+    if(data[index]) {
+      setMyArray(data[index].answers);
+      setMyAnswersCorrect([...answersCorrect, data[index].answers_correct]);
+    }
   }, [index, time]);
 
   useEffect(() => {
@@ -196,19 +202,26 @@ export default function Questions({ navigation }) {
         setTime(time - 1);
       }, 1000);
     } else if(!isActive) {
-      setIsActive(true);
-      setTime(15);
+      if(data[index]) {
+        setIsActive(true);
+        setTime(minutesCount);
+      }
       return () => clearTimeout(startTime);
     }
   }, [time, isActive]);
   
   function newQuestion() {
-    index++
+    navigation.setParams({
+      index: index + 1,
+    });
     setIsActive(false);
-    if(!data[index]) {
-      index = 0;
-      setTime(15);
+    
+    console.log(index);
+    if(index === 9) {
+      setModalVisible(false);
+      console.log(answersCorrect);
       navigation.navigate('Congratulation');
+      return () => clearTimeout(startTime);
     }
   }
 
@@ -219,6 +232,7 @@ export default function Questions({ navigation }) {
   if (!fontsLoaded) {
     return null;
   }
+
 
 
   return(
@@ -232,7 +246,7 @@ export default function Questions({ navigation }) {
         </Text>
       </View>
 
-        { data ? (
+        { data[index] ? (
         <>
         <View style={styles.bannerQuestion}>
           <Text style={styles.bannerTextQuestion}>
@@ -270,12 +284,19 @@ export default function Questions({ navigation }) {
           <View style={styles.buttonModal}>
             <TouchableOpacity style={styles.buttonResult} onPress={() => {
               setModalVisible(false);
+              setTime(minutesCount);
+              navigation.setParams({
+                index: 0,
+              });
               navigation.navigate('Congratulation')
             }}>
               <Text style={styles.textButton}>RESULTADO</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => {
               setModalVisible(false);
+              navigation.setParams({
+                index: 0,
+              });
               navigation.popToTop();
             }}>
               <Text style={styles.textButton}>REINICIAR</Text>

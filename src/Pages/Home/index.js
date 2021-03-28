@@ -2,7 +2,12 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useFonts, MPLUSRounded1c_700Bold } from '@expo-google-fonts/m-plus-rounded-1c';
 
+
 import helloLogo from '../../assets/hello_logo.svg'
+import question from '../../../question-group-one.json';
+
+const data = question;
+let index = 0;
 
 const styles = StyleSheet.create({
   container: {
@@ -107,7 +112,10 @@ export default function Home({ navigation }) {
           Tema: Citoplasma e Respiração Celular
         </Text>
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Questions')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Questions', {
+        data: data,
+        index: index,
+      })}>
         <Text style={styles.textButton}>
           COMEÇAR
         </Text>

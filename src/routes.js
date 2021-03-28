@@ -31,6 +31,7 @@ function Routes() {
               },
             }
           }
+          initialParams={{ index: 0 }}
         />
         <Stack.Screen
           name="Questions"
