@@ -22,7 +22,7 @@ function Routes() {
             {
               headerTitle: <Header title="BEM-VINDO"/>,
               headerStyle: {
-                backgroundColor: '#875FC0'
+                backgroundColor: '#ad573f'
               },
               headerTintColor: '#fff',
               headerTitleAlign: 'center',
@@ -40,7 +40,7 @@ function Routes() {
             {
               headerTitle: <Header title="Citoplasma e Respiração Celular"/>,
               headerStyle: {
-                backgroundColor: '#875FC0'
+                backgroundColor: '#ad573f'
               },
               headerTintColor: '#fff',
               headerTitleAlign: 'center',
@@ -58,7 +58,7 @@ function Routes() {
             {
               headerTitle: <Header title="Parabéns"/>,
               headerStyle: {
-                backgroundColor: '#875FC0'
+                backgroundColor: '#ad573f'
               },
               headerTintColor: '#fff',
               headerTitleAlign: 'center',
@@ -76,7 +76,7 @@ function Routes() {
             {
               headerTitle: <Header title="Nome dos estudantes"/>,
               headerStyle: {
-                backgroundColor: '#875FC0'
+                backgroundColor: '#ad573f'
               },
               headerTintColor: '#fff',
               headerTitleAlign: 'center',

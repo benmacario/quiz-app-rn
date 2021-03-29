@@ -34,7 +34,7 @@
     "answers": [
       "Carbônico",
       "Hidrogênio",
-      "Oxigênio",
+      "O2",
       "Nitrogênio"
     ]
   },
@@ -127,6 +127,17 @@
       "26 ou 28",
       "2 ou 4",
       "38"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Você gostou do jogo?",
+    "answers_correct": [
+      "NaN"
+    ],
+    "answers": [
+      "Sim",
+      "Não"
     ]
   }
 ]

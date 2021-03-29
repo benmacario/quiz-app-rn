@@ -2,11 +2,20 @@
   "name": "rn-quiz",
   "displayName": "rn-quiz",
   "expo": {
-    "name": "rn-quiz",
+    "name": "Quiz",
+    "icon": "./src/assets/icon.png",
     "slug": "rn-quiz",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "backgroundColor": "#AD573F"
+    },
+    "android": {
+      "package": "com.brendon.quiz",
+      "versionCode": 1
+    }
   }
 }

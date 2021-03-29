@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, Modal } from 'react-native';
 import { useFonts, MPLUSRounded1c_700Bold } from '@expo-google-fonts/m-plus-rounded-1c';
-
-import question from '../../../question-group-one.json';
 import failLogo from '../../assets/fail.svg';
-
-const data = question;
 
 let startTime;
 
@@ -13,7 +9,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     height: '100%',
-    backgroundColor: '#875FC0',
+    backgroundColor: '#ad573f',
     alignItems: 'center',
   },
 
@@ -154,7 +150,7 @@ const styles = StyleSheet.create({
 
   buttonResult: {
     marginTop: 30,
-    backgroundColor: '#875FC0',
+    backgroundColor: '#ad573f',
     paddingHorizontal: 80,
     paddingVertical: 12,
     borderRadius: 50,
@@ -172,13 +168,15 @@ const styles = StyleSheet.create({
 });
 
 export default function Questions({ route, navigation }) {
-  const { index } = route.params;
-  const minutesCount = 5;
+  const { index, data } = route.params;
+  const minutesCount = 15;
   const [time, setTime] = useState(minutesCount);
   const [myArray, setMyArray] = useState([]);
   const [answersCorrect, setMyAnswersCorrect] = useState([]);
+  const [answer, setAnswer] = useState([]);
   const [isActive, setIsActive] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+
 
   useEffect(() => {
     if(time === 0) {
@@ -189,12 +187,15 @@ export default function Questions({ route, navigation }) {
       setModalVisible(true);
       return () => clearTimeout(startTime);
     }
+    
+  }, [time]);
 
+  useEffect(() => {
     if(data[index]) {
-      setMyArray(data[index].answers);
-      setMyAnswersCorrect([...answersCorrect, data[index].answers_correct]);
+      shuffleArray(data[index].answers);
+      setMyAnswersCorrect([...answersCorrect, data[index].answers_correct.toString()]);
     }
-  }, [index, time]);
+  }, [index])
 
   useEffect(() => {
     if(isActive && time > 0) {
@@ -209,18 +210,29 @@ export default function Questions({ route, navigation }) {
       return () => clearTimeout(startTime);
     }
   }, [time, isActive]);
+
+  useEffect(() => {
+    if(!modalVisible) {
+      return () => clearTimeout(startTime);
+    }
+  }, [modalVisible])
   
-  function newQuestion() {
+  function newQuestion(value) {
+    setAnswer([...answer, value]);
+    setIsActive(false);
+
     navigation.setParams({
       index: index + 1,
     });
-    setIsActive(false);
     
-    console.log(index);
-    if(index === 9) {
+    if(index === 10) {
       setModalVisible(false);
-      console.log(answersCorrect);
-      navigation.navigate('Congratulation');
+
+      navigation.navigate('Congratulation', {
+        answerResults: answer,
+        checkingAnswer: answersCorrect,
+      });
+
       return () => clearTimeout(startTime);
     }
   }
@@ -233,7 +245,23 @@ export default function Questions({ route, navigation }) {
     return null;
   }
 
+  function shuffleArray(array) {
+    const newArray = [];
+    let number = Math.floor(Math.random() * array.length);
+    let count = 1;
+    newArray.push(array[number]);
 
+    while (count < array.length) {
+        const newNumber = Math.floor(Math.random() * array.length);
+        if (!newArray.includes(array[newNumber])) {
+            count++;
+            number = newNumber;
+            newArray.push(array[number]);
+        }
+    }
+
+    setMyArray(newArray);
+}
 
   return(
     <View style={styles.container}>
@@ -257,7 +285,7 @@ export default function Questions({ route, navigation }) {
           { 
             myArray.map((value, i) => {
               return(
-                <TouchableOpacity  key={i} style={styles.buttonQuestion} onPress={() => { newQuestion() }}>
+                <TouchableOpacity  key={value} style={styles.buttonQuestion} onPress={() => { newQuestion(value) }}>
                   <View style={styles.circle}>
                     <Text style={styles.letterCircle}>{i + 1}</Text>
                   </View>
@@ -285,10 +313,16 @@ export default function Questions({ route, navigation }) {
             <TouchableOpacity style={styles.buttonResult} onPress={() => {
               setModalVisible(false);
               setTime(minutesCount);
+
               navigation.setParams({
                 index: 0,
               });
-              navigation.navigate('Congratulation')
+
+              clearTimeout(startTime);
+              navigation.navigate('Congratulation', {
+                answerResults: answer,
+                checkingAnswer: answersCorrect,
+              });
             }}>
               <Text style={styles.textButton}>RESULTADO</Text>
             </TouchableOpacity>

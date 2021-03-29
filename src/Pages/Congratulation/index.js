@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     height: '100%',
-    backgroundColor: '#875FC0',
+    backgroundColor: '#ad573f',
     alignItems: 'center',
   },
 
@@ -71,7 +71,20 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function Congratulation({ navigation }) {
+
+export default function Congratulation({ route, navigation }) {
+  const { answerResults, checkingAnswer } = route.params;
+  let result = [];
+
+  const answer = answerResults;
+  const checking = checkingAnswer;
+
+  for(let i = 0; i <= checking.length; i++) {
+    if(checking.indexOf(answer[i]) > -1) {
+      result.push(answer[i]);
+    }
+  }
+
   let [fontsLoaded] = useFonts({
     MPLUSRounded1c_700Bold,
     Roboto_700Bold,
@@ -79,6 +92,28 @@ export default function Congratulation({ navigation }) {
 
   if (!fontsLoaded) {
     return null;
+  }
+  function Result() {
+    
+    if(result.length === 10) {
+      return(
+        <Text style={styles.textComplete}>
+          Excelente, continue mantendo seus conteúdos em dia
+        </Text>
+      )
+    } else if(result.length > 7 && result.length < 10) {
+      return(
+        <Text style={styles.textComplete}>
+          Muito bem, continue se empenhando
+        </Text>
+      )
+    } else if(result.length < 7) {
+      return(
+        <Text style={styles.textComplete}>
+          Acho melhor você dar uma revisada no conteúdo
+        </Text>
+      )
+    }
   }
 
   return(
@@ -91,11 +126,9 @@ export default function Congratulation({ navigation }) {
           Resultado
         </Text>
         <Text style={styles.textCorrect}>
-          7 Corretas
+          {result.length} Corretas
         </Text>
-        <Text style={styles.textComplete}>
-          Você concluiu o desafio com sucesso
-        </Text>
+        <Result />
       </View>
       <TouchableOpacity style={styles.button} onPress={() => navigation.popToTop()}>
         <Text style={styles.textButton}>REINICIAR</Text>
