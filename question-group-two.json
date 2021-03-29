@@ -2,99 +2,141 @@
   {
     "id": 1,
     "question": "Onde tem o maior saldo de ATP dentre as etapas da respiração celular?",
-    "answers": {
-      "Glicólise": true,
-      "Cadeia respiratória": false,
-      "Ciclo de Krebs": false,
-      "Fermentação": false
-    }
+    "answers_correct": [
+      "Cadeia respiratória"
+    ],
+    "answers": [
+      "Glicólise",
+      "Cadeia respiratória",
+      "Ciclo  de  Krebs",
+      "Fermentação "
+    ]
   },
   {
     "id": 2,
     "question": "A membrana plasmática controla a entrada e saída de substâncias na célula e envolve o citoplasma. Essa afirmação é verdadeira ou falsa?",
-    "answers": {
-      "Verdadeira": true,
-      "Falsa": false
-    }
+    "answers_correct": [
+      "Verdadeira"
+    ],
+    "answers": [
+      "Verdadeira",
+      "Falsa"
+    ]
   },
   {
     "id": 3,
     "question": "Qual ciência que estuda a estrutura e as funções das células?",
-    "answers": {
-      "Histologia": false,
-      "Fisiologia": false,
-      "Taxonomia": false,
-      "Citologia": true
-    }
+    "answers_correct": [
+      "Citologia"
+    ],
+    "answers": [
+      "Histologia",
+      "Fisiologia",
+      "Taxonomia",
+      "Citologia"
+    ]
   },
   {
     "id": 4,
     "question": "Quais as coenzimas responsáveis pelo transporte de elétrons no processo de oxidação dos compostos orgânicos nas mitocôndrias?",
-    "answers": {
-      "SAMe": false,
-      " NADH e FADH": true,
-      "Q10": false,
-      "CoA": false
-    }
+    "answers_correct": [
+      "NADH e FADH"
+    ],
+    "answers": [
+      "SAMe",
+      "NADH e FADH",
+      "Q10",
+      "CoA"
+    ]
   },
   {
     "id": 5,
     "question": "Qual é o principal processo anaeróbio de obtenção de energia a partir de substâncias orgânicas?",
-    "answers": {
-      "Quimiossíntese": false,
-      "Fermentação": true,
-      "Respiração celular": false,
-      "Fotossíntese": false
-    }
+    "answers_correct": [
+      "Fermentação"
+    ],
+    "answers": [
+      "Quimiossíntese",
+      "Fermentação",
+      "Respiração  celular",
+      "Fotossíntese"
+    ]
   },
   {
     "id": 6,
     "question": "Em que local da célula ocorre a glicólise?",
-    "answers": {
-      "Cloroplastos": false,
-      "Mitocôndrias": false,
-      "Citosol": true,
-      "Núcleo": false
-    }
+    "answers_correct": [
+      "Citosol"
+    ],
+    "answers": [
+      "Cloroplastos",
+      "Mitocôndrias",
+      "Citosol",
+      "Núcleo"
+    ]
   },
   {
     "id": 7,
     "question": "Na primeira etapa do processo de fotossíntese ocorre:",
-    "answers": {
-      "Redução de CO2": true,
-      "Produção de O2": false,
-      "Produção de NADPH2": false,
-      "Fotólise da água": false
-    }
+    "answers_correct": [
+      "Redução de CO2"
+    ],
+    "answers": [
+      "Redução de CO2",
+      "Produção de O2",
+      "Produção de NADPH2",
+      "Fotólise da água"
+    ]
   },
   {
     "id": 8,
     "question": "A fase química da fotossíntese poderia ocorrer independentemente da etapa fotoquímica se os cloroplastos possuíssem:",
-    "answers": {
-      "ATP e NADPH": true,
-      "Elétrons": false,
-      "CoA": false,
-      "CO2": false
-    }
+    "answers_correct": [
+      "ATP e NADPH"
+    ],
+    "answers": [
+      "ATP e NADPH",
+      "Elétrons",
+      "CoA",
+      "CO2"
+    ]
   },
   {
     "id": 9,
     "question": "Que tipo de Respiração Celular a animação abaixo corresponde:",
-    "answers": {
-      "Glicólise ": false,
-      "Cadeia Respiratória": false,
-      "Ciclo de Krebs": true,
-      "Cadeia Carbônica": false
-    }
+    "image": "true",
+    "answers_correct": [
+      "Ciclo de Krebs"
+    ],
+    "answers": [
+      "Glicólise",
+      "Cadeia  Respiratória",
+      "Ciclo de Krebs",
+      "Cadeia  Carbônica"
+    ]
   },
   {
     "id": 10,
     "question": "De onde vem a energia necessária para a ativação dos elétrons na fotossíntese?",
-    "answers": {
-      "Queimadas": false,
-      "Energia nuclear": false,
-      "Luz solar": true,
-      "Força Vital": false
-    }
+    "answers_correct": [
+      "Luz solar"
+    ],
+    "answers": [
+      "Queimadas",
+      "Energia nuclear",
+      "Luz solar",
+      "Força Vital"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Você gostou do jogo?",
+    "answers_correct": [
+      "NaN"
+    ],
+    "answers": [
+      "Sim",
+      "Não"
+    ]
   }
 ]

@@ -11,7 +11,7 @@
     ],
     "splash": {
       "image": "./src/assets/splash.png",
-      "backgroundColor": "#AD573F"
+      "backgroundColor": "#5f021f"
     },
     "android": {
       "package": "com.brendon.quiz",

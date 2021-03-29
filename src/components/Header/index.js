@@ -5,7 +5,7 @@ export default function Header(props) {
   return(
     <Text>
       {props.title}
-      <StatusBar barStyle="light-content" backgroundColor="#ad573f"/>
+      <StatusBar barStyle="light-content" backgroundColor="#5f021f"/>
     </Text>
   );
 }

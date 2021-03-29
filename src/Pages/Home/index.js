@@ -1,10 +1,10 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, TextInput, Platform, KeyboardAvoidingView  } from 'react-native';
 import { useFonts, MPLUSRounded1c_700Bold } from '@expo-google-fonts/m-plus-rounded-1c';
 
 
 import helloLogo from '../../assets/hello_logo.svg'
-import question from '../../../question-group-one.json';
+import question from '../../../question-group-two.json';
 
 const data = question;
 let index = 0;
@@ -13,51 +13,43 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     height: '100%',
-    backgroundColor: '#ad573f',
+    backgroundColor: '#5f021f',
     alignItems: 'center'
   },
 
-  viewImage: {
-    elevation: 1,
-  },
-
   helloLogo: {
-    width: 198,
-    height: 164,
-    top: 60,
+    width: 328,
+    height: 231,
+    marginTop: 80,
   },
 
-  bannerHome: {
+  inputHome: {
     display: 'flex',
+    marginTop: 60,
     width: '90%',
-    minHeight: 300,
-    maxHeight: 400,
-    backgroundColor: "#fff",
-    borderRadius: 15,
 
     justifyContent: 'center',
     alignItems: 'center',
   },
 
-  textBanner: {
-    marginTop: 100,
-    marginBottom: 30,
-    marginHorizontal: 30,
+  textInputHome: {
+    marginBottom: 20,
 
     textAlign: 'center',
-    fontSize: 22,
-    color: '#928F8F',
+    fontSize: 20,
+    color: '#FFF',
     fontFamily: 'MPLUSRounded1c_700Bold'
   },
 
-  textBannerTema: {
-    marginBottom: 50,
-    marginHorizontal: 30,
-
-    textAlign: 'center',
-    fontSize: 22,
-    color: '#666',
-    fontFamily: 'MPLUSRounded1c_700Bold'
+  input: {
+    width: '100%',
+    height: 55,
+    marginBottom: 20,
+    fontSize: 18,
+    borderRadius: 12,
+    backgroundColor: '#FFF',
+    fontFamily: 'MPLUSRounded1c_700Bold',
+    paddingLeft: 15,
   },
 
   button: {
@@ -89,6 +81,7 @@ const styles = StyleSheet.create({
 });
 
 export default function Home({ navigation }) {
+  const [name, setName] = useState('');
   let [fontsLoaded] = useFonts({
     MPLUSRounded1c_700Bold,
   });
@@ -98,23 +91,25 @@ export default function Home({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <View style={styles.viewImage}>
         <Image style={styles.helloLogo} source={helloLogo}/>
       </View>
-      <View style={styles.bannerHome}>
-        <Text style={styles.textBanner}>
-          O aplicativo foi feito com o
-          intuitito de apresentar o
-          trabalho do curso de Odontologia
+      <View style={styles.inputHome}>
+        <Text style={styles.textInputHome}>
+          Digite seu nome
         </Text>
-        <Text style={styles.textBannerTema}>
-          Tema: Citoplasma e Respiração Celular
-        </Text>
+        <TextInput
+          style={styles.input}
+          value={name.name}
+          onChangeText={(name) => setName({name})}
+          placeholder="Seu nome"
+        />
       </View>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Questions', {
         data: data,
         index: index,
+        name: name,
       })}>
         <Text style={styles.textButton}>
           COMEÇAR
@@ -125,6 +120,6 @@ export default function Home({ navigation }) {
           Alunos
         </Text>
       </TouchableOpacity>
-    </View>
+    </KeyboardAvoidingView>
   );
 }

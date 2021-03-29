@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, Modal } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useFonts, MPLUSRounded1c_700Bold } from '@expo-google-fonts/m-plus-rounded-1c';
 import failLogo from '../../assets/fail.svg';
 
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     height: '100%',
-    backgroundColor: '#ad573f',
+    backgroundColor: '#5f021f',
     alignItems: 'center',
   },
 
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   bannerQuestion: {
     width: '90%',
     minHeight: 200,
-    maxHeight: 320,
     marginTop: 20,
     backgroundColor: '#FFF',
 
@@ -150,7 +149,7 @@ const styles = StyleSheet.create({
 
   buttonResult: {
     marginTop: 30,
-    backgroundColor: '#ad573f',
+    backgroundColor: '#5f021f',
     paddingHorizontal: 80,
     paddingVertical: 12,
     borderRadius: 50,
@@ -168,23 +167,23 @@ const styles = StyleSheet.create({
 });
 
 export default function Questions({ route, navigation }) {
-  const { index, data } = route.params;
+  const { data, index, name } = route.params;
   const minutesCount = 15;
   const [time, setTime] = useState(minutesCount);
   const [myArray, setMyArray] = useState([]);
   const [answersCorrect, setMyAnswersCorrect] = useState([]);
   const [answer, setAnswer] = useState([]);
   const [isActive, setIsActive] = useState(true);
-  const [modalVisible, setModalVisible] = useState(false);
+  // const [modalVisible, setModalVisible] = useState(false);
 
 
   useEffect(() => {
     if(time === 0) {
       setTime(minutesCount);
       navigation.setParams({
-        index: 0,
+      index: index + 1,
       });
-      setModalVisible(true);
+      // setModalVisible(true);
       return () => clearTimeout(startTime);
     }
     
@@ -198,7 +197,7 @@ export default function Questions({ route, navigation }) {
   }, [index])
 
   useEffect(() => {
-    if(isActive && time > 0) {
+    if(isActive) {
       startTime = setTimeout(() => {
         setTime(time - 1);
       }, 1000);
@@ -211,11 +210,11 @@ export default function Questions({ route, navigation }) {
     }
   }, [time, isActive]);
 
-  useEffect(() => {
-    if(!modalVisible) {
-      return () => clearTimeout(startTime);
-    }
-  }, [modalVisible])
+  // useEffect(() => {
+  //   if(!modalVisible) {
+  //     return () => clearTimeout(startTime);
+  //   }
+  // }, [modalVisible])
   
   function newQuestion(value) {
     setAnswer([...answer, value]);
@@ -226,11 +225,12 @@ export default function Questions({ route, navigation }) {
     });
     
     if(index === 10) {
-      setModalVisible(false);
+      // setModalVisible(false);
 
       navigation.navigate('Congratulation', {
         answerResults: answer,
         checkingAnswer: answersCorrect,
+        name: name,
       });
 
       return () => clearTimeout(startTime);
@@ -261,7 +261,7 @@ export default function Questions({ route, navigation }) {
     }
 
     setMyArray(newArray);
-}
+  }
 
   return(
     <View style={styles.container}>
@@ -280,6 +280,7 @@ export default function Questions({ route, navigation }) {
           <Text style={styles.bannerTextQuestion}>
             {data[index].question}
           </Text>
+          {data[index].image && <Image style={{width: 200, height: 150}} source={require('../../assets/cicle.gif')}/>}
         </View>
         <View style={styles.containerQuestion}>
           { 
@@ -298,7 +299,7 @@ export default function Questions({ route, navigation }) {
         </View>
         </>
         ) : null }
-      <Modal
+      {/* <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
@@ -322,6 +323,7 @@ export default function Questions({ route, navigation }) {
               navigation.navigate('Congratulation', {
                 answerResults: answer,
                 checkingAnswer: answersCorrect,
+                name: name,
               });
             }}>
               <Text style={styles.textButton}>RESULTADO</Text>
@@ -337,7 +339,7 @@ export default function Questions({ route, navigation }) {
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
+      </Modal> */}
     </View>
   );
 }
